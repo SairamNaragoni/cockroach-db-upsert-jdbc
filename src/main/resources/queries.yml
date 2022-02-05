@@ -1,0 +1,2 @@
+insertQuery: INSERT INTO users (id, name, city) VALUES(?, ?, ?);
+upsertQuery: UPSERT INTO users (id, name, city) VALUES(?, ?, ?);
