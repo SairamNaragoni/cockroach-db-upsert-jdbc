@@ -43,15 +43,15 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public int save(User entity) {
-        String insertQuery = environment.getProperty("insertQuery");
-        return jdbcTemplate.update(insertQuery, entity.getId(), entity.getName(), entity.getCity());
+        String upsertQuery = environment.getProperty("upsertQuery");
+        return jdbcTemplate.update(upsertQuery, entity.getId(), entity.getName(), entity.getCity());
     }
 
     @Override
     public int[][] saveAll(List<User> entities) {
-        String insertQuery = environment.getProperty("upsertQuery");
+        String upsertQuery = environment.getProperty("upsertQuery");
         final int batchSize = entities.size() > 250 ? 250 : Math.min(25, entities.size()) ;
-        return jdbcTemplate.batchUpdate(insertQuery, entities, batchSize, (ps, user) -> {
+        return jdbcTemplate.batchUpdate(upsertQuery, entities, batchSize, (ps, user) -> {
             ps.setString(1, user.getId().toString());
             ps.setString(2, user.getName());
             ps.setString(3, user.getCity());
