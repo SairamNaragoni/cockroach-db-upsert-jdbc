@@ -6,7 +6,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.List;
 
 @NoRepositoryBean
-public interface ExtendedJpaRepository<T>{
+public interface ExtendedJdbcRepository<T>{
 
     T upsert(T entity);
 

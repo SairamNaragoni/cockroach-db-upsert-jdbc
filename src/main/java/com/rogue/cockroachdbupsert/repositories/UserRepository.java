@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends ExtendedJpaRepository<User> {
+public interface UserRepository extends ExtendedJdbcRepository<User> {
 
     int save(User entity);
 
